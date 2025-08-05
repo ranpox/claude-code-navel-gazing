@@ -1,0 +1,23 @@
+# Large files that should be downloaded/generated separately
+claude-code-package/
+cli-prettified.js
+
+
+# Node modules
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
