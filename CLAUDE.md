@@ -100,7 +100,7 @@ const toolCategories = {
 ## Recent Progress
 - ✅ **MAJOR MILESTONE**: Extracted COMPLETE main system prompt from prettified CLI
 - ✅ Completed all 7 research phases (Architecture, Message Flow, Tools, Context, Subagents, State, Prompts)
-- ✅ Extracted prompts/descriptions for 18/21 tools (only 3 MCP tools remaining)
+- ✅ Extracted prompts/descriptions for ALL 21 tools (MCP investigation complete)
 - ✅ Created 5 comprehensive documentation files
 - ✅ Found git workflows, output modes, task management instructions
 
@@ -113,10 +113,10 @@ const toolCategories = {
 - **Git Integration**: Complete workflows for commits and pull requests
 - **Output Modes**: Insights Mode and Learn by Doing Mode for educational interactions
 
-## Tool Prompts Status
-- **Complete (8)**: Read, Write, Edit, Bash, Glob, Grep, LS, TodoWrite
-- **With Full Descriptions (10)**: Above 8 + MultiEdit, NotebookEdit, ExitPlanMode, WebFetch, WebSearch, Agent/Task
-- **Missing (3)**: MCP tools only (ListMcpResources, ReadMcpResource, McpInput)
+## Tool Prompts Status  
+- **Complete (18/21)**: Read, Write, Edit, Bash, Glob, Grep, LS, TodoWrite, MultiEdit, NotebookEdit, ExitPlanMode, WebFetch, WebSearch, Agent/Task, ListMcpResources, ReadMcpResource, mcp__ide__executeCode, mcp__ide__getDiagnostics
+- **Generic Handler (1)**: MCP generic handler with empty prompts
+- **Non-existent**: McpInput tool does not exist (only 21 tools total, not 22)
 
 ## Exploration Methodology & Memory System
 
@@ -163,7 +163,7 @@ const toolCategories = {
 
 ## Next Steps
 See [comprehensive exploration plan](./claude-code-comprehensive-exploration-plan.md) for:
-1. Extract remaining 3 MCP tool prompts (low priority - rarely used)
+1. ✅ COMPLETE: MCP tool prompts extracted (only 2 resource tools + 2 IDE tools exist)
 2. Investigate runtime behavior and dynamic prompt construction
 3. Analyze context window management strategies
 4. Document advanced features (planning mode, reasoning traces)

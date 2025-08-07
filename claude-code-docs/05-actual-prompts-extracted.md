@@ -643,10 +643,72 @@ const toolCategories = {
 const JCQ = ["allow", "deny"];
 ```
 
+## MCP Tool Prompts (COMPLETE)
+
+### ListMcpResourcesTool
+
+**Description (zOB)**:
+```
+Lists available resources from configured MCP servers.
+Each resource object includes a 'server' field indicating which server it's from.
+```
+
+**Prompt (EOB)**:
+```
+List available resources from configured MCP servers.
+Each returned resource will include all standard MCP resource fields plus a 'server' field 
+indicating which server the resource belongs to.
+
+Usage examples:
+- List all resources from all servers: `listMcpResources`
+- List resources from a specific server: `listMcpResources({ server: "myserver" })`
+```
+
+### ReadMcpResourceTool
+
+**Description (UOB)**:
+```
+Reads a specific resource from an MCP server.
+- server: The name of the MCP server to read from
+- uri: The URI of the resource to read
+```
+
+**Prompt ($OB)**:
+```
+Reads a specific resource from an MCP server, identified by server name and resource URI.
+Parameters:
+- server: The name of the MCP server to read from
+- uri: The URI of the resource to read
+
+Usage examples:
+- Read a resource from a server: `readMcpResource({ server: "myserver", uri: "my-resource-uri" })`
+```
+
+### MCP IDE Tools
+
+**mcp__ide__executeCode** and **mcp__ide__getDiagnostics** are IDE-specific MCP tools:
+- Part of IDE tools array: `AI8 = ["mcp__ide__executeCode", "mcp__ide__getDiagnostics"]`
+- Used for IDE integrations  
+- These tools follow the naming pattern: `mcp__${serverName}__${toolName}`
+
+### Generic MCP Handler
+
+**Name**: "mcp" (generic handler)  
+**Description (DOB)**: Empty string `""`  
+**Prompt (ZOB)**: Empty string `""`  
+**Properties**:
+- `isMcp: true`
+- `isEnabled: true`
+- `isConcurrencySafe: false`
+- `isReadOnly: false`
+
+**Note**: McpInput tool does not exist. Only 4-5 total MCP tools found (2 resource tools + 2 IDE tools + 1 generic handler).
+
 ## Observations
 
 1. **Heavily Minified**: The CLI source is heavily minified and obfuscated, making it difficult to extract complete prompts
 2. **Dynamic Construction**: Many prompts appear to be constructed dynamically at runtime
+3. **MCP Tools Complete**: All MCP tool prompts have been found - there are only 2 main MCP resource tools plus IDE tools
 3. **Template Variables**: Heavy use of template variables (${variable}) suggests prompts are assembled from multiple sources
 4. **Security Focus**: Strong emphasis on path validation, permission checking, and user consent
 5. **Multimodal Support**: Clear support for images, PDFs, and other file types beyond text
