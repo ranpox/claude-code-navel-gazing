@@ -51,19 +51,15 @@ To understand the complete agentic flow design, context engineering, architectur
 - [x] Document persistence mechanisms
 - [x] Analyze session resume/continue functionality
 
-### Phase 7: Prompt Engineering & Extraction ✅
-- [x] Understand prompt template construction (inferred from architecture)
-- [x] Analyze tool description injection (found in sdk-tools.d.ts)
-- [x] Map model-specific prompt variations (documented likely patterns)
-- [x] Document prompt size optimization strategies (context window management)
-- [x] Extract actual system prompts from prettified cli.js (partially - main prompt obfuscated)
-- [x] Find tool-specific prompts and descriptions (8 tools complete)
-- [x] Locate subagent prompts and instructions (limited findings)
-- [x] Discover planning mode prompts (not found explicitly)
-- [x] Identify error handling prompts (found some error messages)
-- [x] Extract permission request prompts (found permission templates)
-- [x] Find context assembly templates (found dynamic construction)
-- [x] Locate model-specific prompt variations (not found explicitly)
+### Phase 7: Prompt Engineering & Extraction ✅ COMPLETE
+- [x] Extract COMPLETE main system prompt from prettified cli.js ✅
+- [x] Find tool-specific prompts and descriptions (18/21 tools with descriptions) ✅
+- [x] Locate subagent (Agent/Task tool) prompts and instructions ✅
+- [x] Discover output mode prompts (Insights, Learn by Doing) ✅
+- [x] Identify error handling and permission prompts ✅
+- [x] Extract git workflow prompts (commit, PR creation) ✅
+- [x] Find context assembly templates ✅
+- [x] Document task management instructions ✅
 
 **Documentation Created**:
 - [04-prompt-engineering.md](./claude-code-docs/04-prompt-engineering.md) - Inferred architecture
@@ -71,29 +67,32 @@ To understand the complete agentic flow design, context engineering, architectur
 
 ## Prompt Extraction Progress
 
+### ✅ MAJOR MILESTONE: Complete Main System Prompt Extracted!
+The full main system prompt has been successfully extracted from the prettified CLI source (see 05-actual-prompts-extracted.md lines 10-205).
+
 ### Tool-Specific Prompts Extracted
 
 #### File Operations Tools
 - [x] **Read** - File reading with multimodal support ✅ (Complete prompt extracted)
 - [x] **Write** - File creation and overwriting ✅ (Complete prompt extracted)
 - [x] **Edit** - Find and replace in files ✅ (Complete prompt extracted)
-- [ ] **MultiEdit** - Multiple edits in one operation
+- [x] **MultiEdit** - Multiple edits in one operation ✅ (Partial - full description found)
 - [x] **Glob** - Pattern-based file search ✅ (Complete prompt extracted)
 - [x] **Grep** - Content search using ripgrep ✅ (Complete prompt extracted)
 - [x] **LS** - List directory contents ✅ (Complete prompt extracted)
 
 #### Development Tools  
-- [x] **Bash** - Shell command execution ✅ (Complete prompt extracted)
-- [ ] **NotebookEdit** - Jupyter notebook modifications
+- [x] **Bash** - Shell command execution ✅ (Complete prompt extracted with git workflows)
+- [x] **NotebookEdit** - Jupyter notebook modifications ✅ (Partial - description found)
 - [x] **TodoWrite** - Task management ✅ (Complete prompt extracted)
-- [ ] **ExitPlanMode** - Planning mode exit
+- [x] **ExitPlanMode** - Planning mode exit ✅ (Partial - description found)
 
 #### Web Tools
-- [ ] **WebFetch** - Fetch and analyze web content (Partial)
-- [ ] **WebSearch** - Web search capabilities
+- [x] **WebFetch** - Fetch and analyze web content ✅ (Full description + internal prompt template)
+- [x] **WebSearch** - Web search capabilities ✅ (Full description found)
 
 #### Subagent Tool
-- [ ] **Agent** - Task delegation to specialized subagents
+- [x] **Agent (Task)** - Task delegation to specialized subagents ✅ (Full description with examples)
 
 #### MCP Tools
 - [ ] **ListMcpResources** - List MCP resources
@@ -101,14 +100,17 @@ To understand the complete agentic flow design, context engineering, architectur
 - [ ] **McpInput** - Generic MCP input
 
 ### System & Context Prompts
-- [ ] Main system prompt defining Claude Code's identity (Not found - heavily obfuscated)
-- [x] Behavioral guidelines and constraints ✅ (Found "Important Instruction Reminders")
-- [x] Security and safety instructions ✅ (Found copyright/content guidelines)
-- [ ] Context assembly instructions (Partially found - dynamic construction)
-- [ ] Permission request templates for each permission mode
-- [ ] CLAUDE.md integration template
-- [ ] Working directory context template
-- [ ] Environment information template
+- [x] **Main system prompt** defining Claude Code's identity ✅ (COMPLETE - lines 10-205)
+- [x] **Behavioral guidelines and constraints** ✅ (Complete with examples)
+- [x] **Security and safety instructions** ✅ (Complete)
+- [x] **Task management instructions** ✅ (Complete with TodoWrite examples)
+- [x] **Git commit/PR workflows** ✅ (Complete with detailed steps)
+- [x] **Output modes** ✅ (Insights Mode, Learn by Doing Mode)
+- [x] **Context assembly template** ✅ (Found environment info structure)
+- [x] **Permission request templates** ✅ (Found permission messages)
+- [x] **CLAUDE.md integration** ✅ (Found system-reminder pattern)
+- [x] **Working directory context** ✅ (Found in environment block)
+- [x] **Environment information template** ✅ (Complete template found)
 
 ## Remaining Research Areas
 

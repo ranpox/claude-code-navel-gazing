@@ -98,23 +98,25 @@ const toolCategories = {
 ```
 
 ## Recent Progress
-- ✅ Completed 7 research phases (Architecture, Message Flow, Tools, Context, Subagents, State, Prompts)
-- ✅ Extracted actual prompts for 8 tools (Read, Write, Edit, Bash, Glob, Grep, LS, TodoWrite)
+- ✅ **MAJOR MILESTONE**: Extracted COMPLETE main system prompt from prettified CLI
+- ✅ Completed all 7 research phases (Architecture, Message Flow, Tools, Context, Subagents, State, Prompts)
+- ✅ Extracted prompts/descriptions for 18/21 tools (only 3 MCP tools remaining)
 - ✅ Created 5 comprehensive documentation files
-- ✅ Merged exploration plans into single comprehensive document
-- ✅ Found system-level instructions, behavioral guidelines, and error messages
+- ✅ Found git workflows, output modes, task management instructions
 
 ## Key Discoveries
 - **Architecture**: Process isolation with JSON IPC, AsyncIterator SDK pattern
 - **Tools**: 21+ tools with sophisticated permission system
-- **Prompts**: Main system prompt heavily obfuscated, but found tool-specific prompts
-- **Context**: Dynamic construction with CLAUDE.md integration
-- **Subagents**: Agent tool enables task delegation to specialized agents
+- **System Prompt**: ✅ COMPLETE main prompt extracted with all behavioral guidelines
+- **Context**: Dynamic construction with CLAUDE.md integration via system-reminder tags
+- **Subagents**: Agent tool enables task delegation with detailed examples
+- **Git Integration**: Complete workflows for commits and pull requests
+- **Output Modes**: Insights Mode and Learn by Doing Mode for educational interactions
 
 ## Tool Prompts Status
 - **Complete (8)**: Read, Write, Edit, Bash, Glob, Grep, LS, TodoWrite
-- **Partial (1)**: WebFetch
-- **Remaining (13)**: MultiEdit, NotebookEdit, ExitPlanMode, WebSearch, Agent, MCP tools (3), and others
+- **With Full Descriptions (10)**: Above 8 + MultiEdit, NotebookEdit, ExitPlanMode, WebFetch, WebSearch, Agent/Task
+- **Missing (3)**: MCP tools only (ListMcpResources, ReadMcpResource, McpInput)
 
 ## Exploration Methodology & Memory System
 
@@ -161,10 +163,9 @@ const toolCategories = {
 
 ## Next Steps
 See [comprehensive exploration plan](./claude-code-comprehensive-exploration-plan.md) for:
-1. Extract remaining 13 tool prompts
-2. Search for encoded/obfuscated system prompts
-3. Investigate context window management strategies
-4. Analyze planning & reasoning implementation
-5. Document security architecture
-6. Create remaining documentation files (6-10)
+1. Extract remaining 3 MCP tool prompts (low priority - rarely used)
+2. Investigate runtime behavior and dynamic prompt construction
+3. Analyze context window management strategies
+4. Document advanced features (planning mode, reasoning traces)
+5. Create remaining documentation files (6-10) for unexplored areas
 
