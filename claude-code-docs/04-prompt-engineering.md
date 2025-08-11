@@ -4,7 +4,7 @@
 
 Claude Code's prompt engineering system is deeply embedded within the minified CLI bundle. While the complete system prompts are obfuscated, we have extracted some actual prompt fragments and can infer the architecture from the SDK patterns and tool descriptions.
 
-**Note**: See [05-actual-prompts-extracted.md](./05-actual-prompts-extracted.md) for actual prompts found in the source code.
+**Note**: See the `prompts/` subdirectory for actual prompts extracted from the source code, and `tools/` subdirectory for tool descriptions.
 
 ## Inferred Prompt Architecture
 

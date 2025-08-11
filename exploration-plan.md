@@ -63,12 +63,13 @@ To understand the complete agentic flow design, context engineering, architectur
 
 **Documentation Created**:
 - [04-prompt-engineering.md](./claude-code-docs/04-prompt-engineering.md) - Inferred architecture
-- [05-actual-prompts-extracted.md](./claude-code-docs/05-actual-prompts-extracted.md) - Actual prompts found
+- Prompts now organized in `prompts/` subdirectory (4 files)
+- Tools descriptions in `tools/` subdirectory (7 files)
 
 ## Prompt Extraction Progress
 
 ### ✅ MAJOR MILESTONE: Complete Main System Prompt Extracted!
-The full main system prompt has been successfully extracted from the prettified CLI source (see 05-actual-prompts-extracted.md lines 10-205).
+The full main system prompt has been successfully extracted from the prettified CLI source (see prompts/01-main-system-prompt.md).
 
 ### Tool-Specific Prompts Extracted
 
@@ -114,61 +115,62 @@ The full main system prompt has been successfully extracted from the prettified 
 
 ## Remaining Research Areas
 
-### 1. Context Window Management
+### 1. Context Window Management ⚠️ Limited findings
+- [x] Found truncation utilities but no token counting
 - [ ] Investigate large codebase handling strategies
 - [ ] Understand file prioritization algorithms
-- [ ] Analyze context truncation methods
+- [x] Basic text truncation methods found
 - [ ] Map relevance scoring for file inclusion
 - [ ] Document context window overflow handling
 
-### 2. Subagent Implementation Details
-- [ ] Enumerate all specialized subagent types
-- [ ] Understand subagent capability differences
-- [ ] Analyze subagent selection logic
+### 2. Subagent Implementation Details ✅ Partially Complete
+- [x] Found general-purpose agent and examples
+- [x] Understand subagent capability differences (tools access)
+- [x] Analyze subagent selection logic (subagent_type param)
 - [ ] Map subagent orchestration patterns
 - [ ] Document subagent context isolation
 
-### 3. Planning & Reasoning Engine
-- [ ] Investigate "plan" permission mode implementation
+### 3. Planning & Reasoning Engine ✅ Partially Complete
+- [x] Found ExitPlanMode tool implementation
 - [ ] Analyze task decomposition algorithms
 - [ ] Understand multi-step planning logic
 - [ ] Map reasoning traces in responses
 - [ ] Document decision-making patterns
 
-### 4. Model & Inference Configuration
-- [ ] Understand model selection (primary vs fallback)
-- [ ] Analyze model-specific behaviors
-- [ ] Map inference parameters
-- [ ] Document retry strategies with fallback
-- [ ] Investigate model switching triggers
+### 4. Model & Inference Configuration ✅ Complete
+- [x] Understand model selection (primary vs fallback)
+- [x] Found all Claude model variants
+- [x] Map inference parameters
+- [x] Document retry strategies with fallback
+- [x] Investigate model switching triggers (overload detection)
 
-### 5. Advanced Code Understanding
-- [ ] Explore code analysis beyond grep/glob
-- [ ] Understand dependency tracking
-- [ ] Analyze code relationship mapping
-- [ ] Investigate AST-based operations
-- [ ] Document semantic code understanding
+### 5. Advanced Code Understanding ❌ Not Found
+- [x] No AST or semantic analysis found
+- [x] No dependency tracking system
+- [x] No code relationship mapping
+- [x] Only text-based search (grep/glob)
+- [x] Relies on model intelligence
 
-### 6. Error Recovery & Self-Correction
-- [ ] Map error detection patterns
-- [ ] Understand automatic correction strategies
-- [ ] Analyze rollback mechanisms
-- [ ] Document recovery decision trees
-- [ ] Investigate learning from errors
+### 6. Error Recovery & Self-Correction ⚠️ Basic Only
+- [x] Basic retry with backoff found
+- [x] Rate limit handling
+- [ ] No automatic correction strategies
+- [ ] No rollback mechanisms found
+- [ ] No learning from errors
 
-### 7. Performance & Optimization
-- [ ] Analyze streaming performance characteristics
-- [ ] Understand caching strategies
-- [ ] Map parallel tool execution
+### 7. Performance & Optimization ⚠️ Limited findings
+- [x] Streaming via AsyncIterator
+- [ ] No explicit caching strategies found
+- [ ] No parallel execution patterns found
 - [ ] Document resource usage patterns
 - [ ] Investigate optimization heuristics
 
-### 8. Security Architecture
-- [ ] Deep dive into permission system implementation
-- [ ] Analyze sandbox security boundaries
-- [ ] Understand path traversal prevention
-- [ ] Map command injection protections
-- [ ] Document security audit trails
+### 8. Security Architecture ⚠️ Basic findings
+- [x] Permission modes found but implementation hidden
+- [ ] No sandboxing found - direct execution
+- [x] Basic path normalization found
+- [ ] Command injection protections unclear
+- [ ] No audit trails found
 
 ### 9. Extensibility & Plugin System
 - [ ] Investigate MCP (Model Context Protocol) integration
@@ -299,9 +301,9 @@ The full main system prompt has been successfully extracted from the prettified 
 ## Project Structure Reference
 
 ```
-cc_analyze/
+claude-code-navel-gazing/
 ├── CLAUDE.md                           # Project memory and quick reference
-├── claude-code-comprehensive-exploration-plan.md  # This file
+├── exploration-plan.md  # This file
 ├── cli-prettified.js                   # Prettified CLI source (12MB)
 ├── claude-code-package/                # Original package files
 │   └── package/
@@ -315,5 +317,8 @@ cc_analyze/
     ├── 02-message-flow-ipc.md
     ├── 03-tool-system.md
     ├── 04-prompt-engineering.md
-    └── 05-actual-prompts-extracted.md
+    ├── 05-runtime-behavior-analysis.md
+    ├── 06-model-selection-and-advanced-features.md
+    ├── prompts/    # System prompts (4 files)
+    └── tools/      # Tool descriptions (7 files)
 ```

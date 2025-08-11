@@ -1,86 +1,101 @@
 # Claude Code Documentation
 
-This documentation provides a comprehensive analysis of Claude Code's architecture, implementation, and design patterns based on reverse engineering the package.
+Comprehensive analysis of Claude Code's architecture, implementation, and extracted prompts from reverse engineering the package.
 
-## Table of Contents
+## Documentation Structure
 
-1. [Architecture Overview](./01-architecture-overview.md)
-   - Package structure
-   - Core components
-   - Process model
-   - Communication patterns
+### Extracted Prompts & Tools
+**[index.md](./index.md)** - Complete navigation guide for all extracted prompts and tool descriptions
 
-2. [Message Flow & IPC](./02-message-flow-ipc.md)
-   - SDK-CLI communication
-   - JSON message protocol
-   - Control messages
-   - Stream processing
+#### System Prompts (`prompts/`)
+- [Main System Prompt](./prompts/01-main-system-prompt.md) - Core identity and behavioral instructions
+- [Task Management](./prompts/02-task-management.md) - TodoWrite tool usage examples
+- [Output Modes](./prompts/03-output-modes.md) - Insights Mode and Learn by Doing Mode
+- [Git Workflows](./prompts/04-git-workflows.md) - Automated git commit and PR workflows
 
-3. [Tool System](./03-tool-system.md)
-   - Available tools (21+)
-   - Tool categories
-   - Permission system
-   - Tool execution patterns
+#### Tool Descriptions (`tools/`)
+- [File Operations](./tools/01-file-operations.md) - Read, Write, Edit, MultiEdit, NotebookEdit
+- [Search Tools](./tools/02-search-tools.md) - Glob, Grep, LS
+- [Execution Tools](./tools/03-execution-tools.md) - Bash tool with git integration
+- [Web Tools](./tools/04-web-tools.md) - WebFetch, WebSearch
+- [Agent Tool](./tools/05-agent-tool.md) - Subagent delegation system
+- [Planning Tools](./tools/06-planning-tools.md) - TodoWrite, ExitPlanMode
+- [MCP Tools](./tools/07-mcp-tools.md) - MCP resources and IDE integration
 
-4. [Prompt Engineering](./04-prompt-engineering.md)
-   - Context building pipeline
-   - Prompt template structure
-   - Context window management
-   - Security constraints
+### Technical Analysis
 
-5. [Actual Prompts Extracted](./05-actual-prompts-extracted.md)
-   - Complete tool prompts found
-   - System instructions
-   - Permission messages
-   - Error templates
+1. **[Architecture Overview](./01-architecture-overview.md)**
+   - Package structure and components
+   - Process isolation model
+   - SDK-CLI communication architecture
 
-6. [Agentic Flow](./06-agentic-flow.md)
-   - User query processing
-   - Context engineering
-   - Subagent architecture
-   - Task orchestration
+2. **[Message Flow & IPC](./02-message-flow-ipc.md)**
+   - Line-delimited JSON protocol
+   - Control messages and interrupts
+   - AsyncIterator streaming pattern
 
-7. [State Management](./07-state-management.md)
-   - Conversation history
-   - Session persistence
-   - Working memory
-   - Context accumulation
+3. **[Tool System](./03-tool-system.md)**
+   - 21 tools implementation analysis
+   - Permission system and modes
+   - Tool execution pipeline
 
-8. [Security Architecture](./08-security.md)
-   - Permission modes
-   - Sandboxing
-   - Process isolation
-   - Input validation
+4. **[Prompt Engineering](./04-prompt-engineering.md)**
+   - Context construction pipeline
+   - CLAUDE.md integration
+   - Dynamic prompt assembly
 
-9. [Development Guide](./09-development-guide.md)
-   - SDK usage
-   - Programmatic access
-   - Extension points
-   - MCP integration
+## Key Discoveries
 
-10. [Implementation Details](./10-implementation-details.md)
-    - Webpack bundling
-    - Minification analysis
-    - Hidden features
-    - Performance optimizations
+### System Architecture
+- **Package**: @anthropic-ai/claude-code v1.0.68 (ES Module, Node.js 18+)
+- **Process Model**: SDK spawns CLI subprocess with JSON IPC
+- **Distribution**: Single minified cli.js (8.7MB) with all dependencies bundled
+- **Communication**: Line-delimited JSON over stdin/stdout
 
-## Quick Reference
+### Behavioral Guidelines Found
+- Extreme conciseness ("answer in 1-3 sentences")
+- CLI-optimized markdown output
+- Security-first (defensive tasks only)
+- Proactive task management via TodoWrite
+- Convention following paramount
+- No emojis unless requested
 
-- **Package**: @anthropic-ai/claude-code v1.0.68
-- **Type**: ES Module, Node.js 18+
-- **Main Files**: 
-  - `cli.js` - Minified CLI (8.7MB)
-  - `sdk.mjs` - SDK interface
-  - `cli-prettified.js` - Prettified CLI (12MB) for analysis
-- **Key Features**:
-  - 21+ built-in tools
-  - Subagent delegation
-  - Stream-based IPC
-  - Session persistence
-  - MCP extensibility
+### Tool System (21 Tools Total)
+- **File Ops**: Prefer Edit over Write, never create docs proactively
+- **Search**: Ripgrep-powered Grep, pattern matching with Glob
+- **Execution**: Bash with comprehensive git workflow support
+- **Web**: Fetch and search with AI processing
+- **Delegation**: Agent tool for complex multi-step tasks
+- **Planning**: TodoWrite for task tracking, ExitPlanMode for planning mode
+- **Extensibility**: MCP protocol for custom integrations
 
-## Related Documents
+## Quick Start Guide
 
-- [CLAUDE.md](../CLAUDE.md) - Original analysis summary
-- [claude-code-exploration-plan.md](../claude-code-exploration-plan.md) - Research roadmap
-- [cli-prettified.js](../cli-prettified.js) - Prettified source for analysis
+### Understanding Claude Code's Behavior
+1. Read [Main System Prompt](./prompts/01-main-system-prompt.md) for core instructions
+2. Review [Task Management](./prompts/02-task-management.md) for TodoWrite patterns
+3. Explore [Tool Descriptions](./index.md) for capability details
+
+### Using Claude Code Programmatically
+```javascript
+import { query } from '@anthropic-ai/claude-code'
+
+const response = query({
+  prompt: "Help me implement a feature",
+  options: {
+    allowedTools: ['Read', 'Write', 'Edit'],
+    permissionMode: 'default',  // or 'acceptEdits', 'bypassPermissions'
+    canUseTool: (tool, input) => true
+  }
+})
+
+for await (const message of response) {
+  console.log(message)
+}
+```
+
+## Related Files
+
+- **[../CLAUDE.md](../CLAUDE.md)** - Project memory and exploration methodology
+- **[../exploration-plan.md](../exploration-plan.md)** - Master research roadmap (merged from multiple plans)
+- **[../cli-prettified.js](../cli-prettified.js)** - Prettified CLI source (12MB) used for extraction

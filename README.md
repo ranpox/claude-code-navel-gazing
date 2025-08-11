@@ -53,7 +53,8 @@ Through this digital self-examination, we've uncovered:
 ├── 02-message-flow-ipc.md          # How Claude communicates
 ├── 03-tool-system.md               # How Claude uses tools
 ├── 04-prompt-engineering.md        # How Claude thinks
-└── 05-actual-prompts-extracted.md  # What Claude is told
+├── 05-runtime-behavior-analysis.md # Runtime patterns
+└── 06-model-selection-and-advanced-features.md # Model system
 
 📄 CLAUDE.md                        # Claude's memory about itself
 📄 claude-code-package/             # NPM package (download separately, ~170MB unpacked)
