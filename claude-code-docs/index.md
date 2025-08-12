@@ -66,6 +66,18 @@ All prompts and tool descriptions were extracted from:
 - **Method**: Pattern matching for long template literals and description fields
 - **Validation**: Cross-referenced with actual tool invocations
 
+## Technical Documentation
+
+1. [Architecture Overview](./01-architecture-overview.md) - Package structure, process model, distribution
+2. [Message Flow & IPC](./02-message-flow-ipc.md) - JSON communication protocol, stream handling
+3. [Tool System](./03-tool-system.md) - 21+ tools, permission models, execution flow
+4. [Prompt Engineering](./04-prompt-engineering.md) - Context construction, system reminders, CLAUDE.md
+5. [Runtime Behavior Analysis](./05-runtime-behavior-analysis.md) - Session persistence, planning mode, interrupts
+6. [Model Selection & Advanced Features](./06-model-selection-and-advanced-features.md) - Model variants, fallback system
+7. [Performance, Limits & Security](./07-performance-limits-security.md) - Truncation, optimization, security model
+8. [Error Handling & Recovery](./08-error-handling-and-recovery.md) - Retry patterns, throttling, fallback strategies
+9. [State Management & Attachments](./09-state-management-attachments.md) - Attachment system, MlB/OC8 functions, system reminders
+
 ## Organization Principles
 
 - **prompts/** - Behavioral instructions that shape Claude Code's personality and approach
