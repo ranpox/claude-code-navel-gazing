@@ -106,6 +106,8 @@ const toolCategories = {
 - ✅ Found git workflows, output modes, task management instructions
 - ✅ **NEW**: Runtime behavior analysis complete (session persistence, planning mode, interrupt handling)
 - ✅ **NEW**: Model selection and fallback system documented (Claude 3.5, 3.7, 4.0 variants)
+- ✅ **LATEST**: Error handling and recovery patterns documented (retry, backoff, fallback)
+- ✅ **LATEST**: Performance characteristics analyzed (limits, truncation, optimization)
 
 ## Key Discoveries
 - **Architecture**: Process isolation with JSON IPC, AsyncIterator SDK pattern
@@ -118,8 +120,10 @@ const toolCategories = {
 - **Model System**: Claude 3.5 (Sonnet/Haiku), 3.7, 4.0 (Sonnet/Opus) with automatic fallback
 - **Planning Mode**: ExitPlanMode tool for transitioning from planning to execution
 - **Session Persistence**: --resume/--continue flags for conversation continuity
-- **Error Recovery**: Basic retry with backoff, rate limiting, no self-correction
+- **Error Recovery**: Retry with exponential backoff, throttling, fallback patterns
 - **Code Analysis**: Text-based only (grep/glob), no AST or semantic understanding
+- **Performance Limits**: 30K char Bash output, 2K line Read default, no token counting
+- **Security Model**: Permission modes, no sandboxing, direct command execution
 
 ## Tool Prompts Status  
 - **Complete (18/21)**: Read, Write, Edit, Bash, Glob, Grep, LS, TodoWrite, MultiEdit, NotebookEdit, ExitPlanMode, WebFetch, WebSearch, Agent/Task, ListMcpResources, ReadMcpResource, mcp__ide__executeCode, mcp__ide__getDiagnostics
@@ -176,22 +180,24 @@ const toolCategories = {
 - **index.md**: Focused navigation for extracted prompts and tools
 - **prompts/**: Behavioral instructions extracted from source (4 files)
 - **tools/**: Tool descriptions organized by category (7 files)
-- **Technical Docs**: Architecture and implementation analysis (7 files)
+- **Technical Docs**: Architecture and implementation analysis (8 files)
   - 01-architecture-overview.md
   - 02-message-flow-ipc.md
   - 03-tool-system.md
   - 04-prompt-engineering.md
-  - 05-runtime-behavior-analysis.md (NEW)
-  - 06-model-selection-and-advanced-features.md (NEW)
+  - 05-runtime-behavior-analysis.md
+  - 06-model-selection-and-advanced-features.md
+  - 07-performance-limits-security.md (Updated with error handling)
+  - 08-error-handling-and-recovery.md (NEW)
 
 ### Next Steps
 See [comprehensive exploration plan](./exploration-plan) for:
 1. ✅ COMPLETE: MCP tool prompts extracted (only 2 resource tools + 2 IDE tools exist)
 2. ✅ COMPLETE: Documentation reorganized for clarity (README vs index separation)
 3. ✅ COMPLETE: Runtime behavior and dynamic prompt construction investigated
-4. ⚠️ PARTIAL: Context window management (found truncation, no token counting)
-5. ⚠️ PARTIAL: Advanced features documented (planning mode found, no reasoning traces)
-6. ❌ NOT FOUND: AST-based code analysis, dependency tracking, semantic understanding
-7. ⚠️ LIMITED: Performance optimization, caching strategies, parallel execution
-8. ⚠️ BASIC: Security implementation, no sandboxing, direct command execution
+4. ✅ COMPLETE: Context window management (30000 char Bash limit, 2000 line Read limit, no token counting)
+5. ✅ COMPLETE: Advanced features documented (planning mode found, extended thinking referenced, no reasoning traces)
+6. ✅ COMPLETE: Confirmed NO AST-based code analysis, dependency tracking, or semantic understanding
+7. ✅ COMPLETE: Performance optimization (WebFetch 15-min cache, batch tool calls, output truncation)
+8. ✅ COMPLETE: Security implementation (basic permissions only, no sandboxing, direct command execution)
 

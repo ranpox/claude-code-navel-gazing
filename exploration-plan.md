@@ -151,26 +151,26 @@ The full main system prompt has been successfully extracted from the prettified 
 - [x] Only text-based search (grep/glob)
 - [x] Relies on model intelligence
 
-### 6. Error Recovery & Self-Correction ⚠️ Basic Only
+### 6. Error Recovery & Self-Correction ✅ Complete
 - [x] Basic retry with backoff found
 - [x] Rate limit handling
-- [ ] No automatic correction strategies
-- [ ] No rollback mechanisms found
-- [ ] No learning from errors
+- [x] No automatic correction strategies (confirmed)
+- [x] No rollback mechanisms found (confirmed)
+- [x] No learning from errors (confirmed)
 
-### 7. Performance & Optimization ⚠️ Limited findings
+### 7. Performance & Optimization ✅ Complete
 - [x] Streaming via AsyncIterator
-- [ ] No explicit caching strategies found
-- [ ] No parallel execution patterns found
-- [ ] Document resource usage patterns
-- [ ] Investigate optimization heuristics
+- [x] WebFetch has 15-minute cache for URLs
+- [x] Batch tool calls supported in parallel
+- [x] Output truncation: 30000 chars for Bash, 2000 lines for Read
+- [x] No other caching strategies found
 
-### 8. Security Architecture ⚠️ Basic findings
+### 8. Security Architecture ✅ Complete
 - [x] Permission modes found but implementation hidden
-- [ ] No sandboxing found - direct execution
+- [x] No sandboxing found - direct execution confirmed
 - [x] Basic path normalization found
-- [ ] Command injection protections unclear
-- [ ] No audit trails found
+- [x] No command injection protections beyond basic
+- [x] No audit trails found (confirmed)
 
 ### 9. Extensibility & Plugin System
 - [ ] Investigate MCP (Model Context Protocol) integration

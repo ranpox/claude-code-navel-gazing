@@ -44,6 +44,22 @@ Comprehensive analysis of Claude Code's architecture, implementation, and extrac
    - CLAUDE.md integration
    - Dynamic prompt assembly
 
+5. **[Runtime Behavior Analysis](./05-runtime-behavior-analysis.md)**
+   - Session persistence and resume functionality
+   - Planning mode and execution transitions
+   - Interrupt handling and error recovery
+
+6. **[Model Selection & Advanced Features](./06-model-selection-and-advanced-features.md)**
+   - Claude 3.5, 3.7, 4.0 model variants
+   - Automatic fallback mechanisms
+   - Feature flags and capabilities
+
+7. **[Performance, Limits & Security](./07-performance-limits-security.md)** 🆕
+   - Output limits (30K chars Bash, 2K lines Read)
+   - Caching strategies (WebFetch 15-min cache)
+   - Security model (no sandboxing, direct execution)
+   - Performance characteristics and bottlenecks
+
 ## Key Discoveries
 
 ### System Architecture
@@ -51,6 +67,18 @@ Comprehensive analysis of Claude Code's architecture, implementation, and extrac
 - **Process Model**: SDK spawns CLI subprocess with JSON IPC
 - **Distribution**: Single minified cli.js (8.7MB) with all dependencies bundled
 - **Communication**: Line-delimited JSON over stdin/stdout
+
+### Performance & Limits
+- **Output Truncation**: 30,000 chars for Bash, 2,000 lines for Read
+- **Caching**: Only WebFetch has 15-minute URL cache
+- **Parallel Execution**: Batch tool calls supported, but sequential execution
+- **No Token Counting**: Relies on Claude API for context management
+
+### Security Model
+- **No Sandboxing**: Commands execute directly with user privileges
+- **Permission Modes**: default, acceptEdits, bypassPermissions, plan
+- **Basic Validation**: Path normalization, minimal input sanitization
+- **Trust-Based**: Designed for local development, not production
 
 ### Behavioral Guidelines Found
 - Extreme conciseness ("answer in 1-3 sentences")
